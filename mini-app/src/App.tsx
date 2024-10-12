@@ -26,4 +26,34 @@ export const App = () => {
       slides: [
         {
           media: {
-            blob: 'D:\study\hakaton ITMO\src\assets'
+            blob: 'D:\study\hakaton ITMO\src\assets', // Здесь добавьте ваши данные изображения в base64
+            type: 'image',
+          },
+          title: 'Привет, первокурсник! Хочешь узнать больше об ИТМО?',
+          subtitle: 'Выполняй задания, развивай персонажа и узнавай все-все о культуре ИТМО',
+        }
+      ],
+    })
+      .then((data) => {
+        // Если слайд успешно показан
+        if (data.result) {
+          setPopout(null); // Скрыть спиннер, если слайд показан
+        }
+      })
+      .catch((error) => {
+        console.error(error); // Обработка ошибок
+      });
+  }, []);  
+
+  return (
+    <SplitLayout popout={popout}>
+      <SplitCol>
+        <View activePanel={activePanel}>
+          <Home id="home" fetchedUser={fetchedUser} />
+          <Persik id="persik" />
+        </View>
+      </SplitCol>
+
+    </SplitLayout>
+  );
+};
