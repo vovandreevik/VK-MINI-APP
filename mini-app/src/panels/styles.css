@@ -1,106 +1,11 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+html, body {
     height: 100vh;
-}
-
-.container {
-    width: 320px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    /* Устанавливаем высоту экрана */
+    margin: 0;
+    /* Убираем внешние отступы */
     overflow: hidden;
+    /* Отключаем прокрутку */
 }
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #fff;
-    border-bottom: 2px solid #eee;
-}
-
-.coins {
-    display: flex;
-    align-items: center;
-}
-
-.coins img {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-}
-
-.progress-bar {
-    flex-grow: 1;
-    margin: 0 10px;
-    background-color: #ddd;
-    border-radius: 10px;
-    height: 8px;
-    position: relative;
-    overflow: hidden;
-}
-
-.progress {
-    width: 50%;
-    background-color: #4a90e2;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.icons img {
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
-}
-
-.character-section {
-    text-align: center;
-    padding: 20px;
-}
-
-.character-name {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.character {
-    width: 150px;
-    height: auto;
-    
-} */
-
-/* .character img{
-    position: absolute;
-    margin-top: -1000px;
-    max-width: 100%;
-    max-width: 100hv;
-} */
-
-/* .footer {
-    padding: 10px;
-    background-color: #4a90e2;
-    text-align: center;
-}
-
-.footer button {
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-} */
 
 .container {
     background-image: url('../assets/fon.svg');
@@ -115,7 +20,7 @@ body {
 }
 
 .Bars {
-    display: block;
+    margin-bottom: 45%;
     margin-left: auto;
     margin-right: auto;
     transition: transform 0.2s ease;
@@ -165,4 +70,33 @@ body {
     /* Размер шрифта для цифры */
     font-weight: bold;
     /* Жирный шрифт для цифры */
+}
+
+.icons {
+        position: fixed;
+        margin-top: 167%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+ 
+}
+
+.icon {
+    background-color: white;
+    /* Синий цвет овала */
+    border-radius: 50px;
+    /* Делаем углы закруглёнными для овальной формы */
+    padding: 10px 20px;
+    /* Внутренние отступы, чтобы элементы не были вплотную к краям */
+    /* Flexbox для выравнивания */
+    align-items: center;
+    /* Вертикальное выравнивание по центру */
+    justify-content: center;
+    /* Горизонтальное выравнивание */
+    color: white;
+    width: fit-content;
+    margin-left: 1%
+        /* Цвет текста */
 }

@@ -3,7 +3,7 @@ import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { Persik, Home } from './panels';
+import { Home, Article } from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -19,6 +19,17 @@ export const App = () => {
     }
     fetchData();
   }, []);
+
+  function setVh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  // Вызываем функцию при загрузке
+  setVh();
+
+  // Обновляем значение при изменении размеров окна
+  window.addEventListener("resize", setVh);
 
   useEffect(() => {
     // Показать слайд при первом запуске приложения
@@ -50,10 +61,9 @@ export const App = () => {
       <SplitCol>
         <View activePanel={activePanel}>
           <Home id="home" fetchedUser={fetchedUser} />
-          <Persik id="persik" />
+          <Article id="article" fetchedUser={fetchedUser} />
         </View>
       </SplitCol>
-
     </SplitLayout>
   );
 };

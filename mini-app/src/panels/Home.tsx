@@ -18,9 +18,10 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 //мое
 import coins from "../assets/coins.png";
+import beITMO from "../assets/beITMO.png";
+import tasks from "../assets/tasks.png";
 import article from "../assets/article.png";
-import check from "../assets/check.png";
-import goods from "../assets/goods.png";
+import ITMOshop from "../assets/ITMOshop.png";
 import Bars from "../assets/Bars.png";
 
 import "./styles.css"
@@ -92,15 +93,11 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
                 <div className="progress-bar">
                   <div className="progress" />
                 </div>
-                <div className="icons">
-                  <img src={check} alt="check" />
-                  <img src={article} alt="article" />
-                  <img src={goods} alt="goods" />
-                </div>
               </div>
               <div className="character-section">
                 <div className="character-section">
                   <div className="character-name">Невдупленыш</div>
+                  <div className="counter">Счётчик тапов: {count}</div>
                   <img
                     src={Bars}
                     alt="Bars"
@@ -113,13 +110,16 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
                       transition: "transform 0.1s ease",
                     }} /* Анимация плавного перехода */
                   />
-                  <div className="counter">Счётчик тапов: {count}</div>
                 </div>
               </div>
-
-              <div className="footer">
-                <Button onClick={() => handleSubmit()}>А что делать-то?</Button>
+              <div className="icons">
+                <img src={beITMO} alt="beITMO" className="icon" onClick={() => routeNavigator.push("article")}
+/>
+                <img src={tasks} alt="tasks" className="icon" />
+                <img src={article} alt="article" className="icon" />
+                <img src={ITMOshop} alt="ITMOshop" className="icon" />
               </div>
+              {/* <Button onClick={() => handleSubmit()}>А что делать-то?</Button> */}
             </div>
           </Group>
         </Panel>
