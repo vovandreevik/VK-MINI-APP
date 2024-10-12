@@ -79,10 +79,12 @@ body {
     
 } */
 
-.character img{
+/* .character img{
+    position: absolute;
+    margin-top: -1000px;
     max-width: 100%;
     max-width: 100hv;
-}
+} */
 
 /* .footer {
     padding: 10px;
@@ -99,3 +101,68 @@ body {
     font-size: 16px;
     cursor: pointer;
 } */
+
+.container {
+    background-image: url('../assets/fon.svg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+.Bars {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.2s ease;
+    /* Плавная анимация для сдвига */
+}
+
+.Bars.pressed {
+    transform: translateY(5px);
+    /* Опускаем картинку на 5 пикселей */
+}
+
+.counter {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.coins {
+    background-color: #4a90e2;
+    /* Синий цвет овала */
+    border-radius: 50px;
+    /* Делаем углы закруглёнными для овальной формы */
+    padding: 10px 20px;
+    /* Внутренние отступы, чтобы элементы не были вплотную к краям */
+    display: flex;
+    /* Flexbox для выравнивания */
+    align-items: center;
+    /* Вертикальное выравнивание по центру */
+    justify-content: center;
+    /* Горизонтальное выравнивание */
+    color: white;
+    width: fit-content;
+    margin-left: 10%
+        /* Цвет текста */
+}
+
+.coins img {
+    width: 24px;
+    /* Размер изображения монет */
+    height: 24px;
+    margin-right: 10px;
+    /* Отступ между картинкой и текстом */
+}
+
+.coins span {
+    font-size: 18px;
+    /* Размер шрифта для цифры */
+    font-weight: bold;
+    /* Жирный шрифт для цифры */
+}
