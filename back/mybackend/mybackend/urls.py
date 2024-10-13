@@ -23,16 +23,16 @@ Including another URLconf
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from api.views import ImageDataViewSet
-from api.views import login_view  # Импортируйте ваш view здесь
+from api.views import get_user_data, get_user_tasks, get_user_update # Импортируйте ваш view здесь
 
 
 router = DefaultRouter()
-router.register(r'images', ImageDataViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('login/', login_view, name='login'),
+    path('api/user', get_user_data, name='get_user_data'),
+    path('api/tasks', get_user_tasks, name='get_user_tasks'),
+    path('api/user/update', get_user_update, name='get_user_update'),
 ]
 
 
