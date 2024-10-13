@@ -4,6 +4,7 @@ import {
   createRoot,
   createView,
   RoutesConfig,
+  
 } from '@vkontakte/vk-mini-apps-router';
 
 export const DEFAULT_ROOT = 'default_root';
@@ -11,11 +12,12 @@ export const DEFAULT_ROOT = 'default_root';
 export const DEFAULT_VIEW = 'default_view';
 
 export const DEFAULT_VIEW_PANELS = {
-  HOME: 'home',
-  ARTICLE: 'article',
-  BEITMO: 'beitmo',
-  TASKS: 'tasks',
-  SHOP: 'shop',
+  HOME: "home",
+  ARTICLE: "article",
+  BEITMO: "beitmo",
+  TASKS: "tasks",
+  SHOP: "shop",
+  L1BF: "l1bf",
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -38,6 +40,7 @@ export const routes = RoutesConfig.create([
         []
       ),
       createPanel(DEFAULT_VIEW_PANELS.SHOP, `/${DEFAULT_VIEW_PANELS.SHOP}`, []),
+      createPanel(DEFAULT_VIEW_PANELS.L1BF, `/${DEFAULT_VIEW_PANELS.L1BF}`, []),
     ]),
   ]),
 ]);

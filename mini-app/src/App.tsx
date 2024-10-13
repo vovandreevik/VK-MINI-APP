@@ -3,7 +3,7 @@ import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { Home, Article, BEITMO, Tasks, Shop } from './panels';
+import { Home, Article, BEITMO, Tasks, Shop, L1BF } from "./panels";
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -67,6 +67,7 @@ export const App = () => {
           <BEITMO id="beitmo" />
           <Tasks id="tasks" />
           <Shop id="shop" />
+          <L1BF id="l1bf" />
         </View>
       </SplitCol>
     </SplitLayout>

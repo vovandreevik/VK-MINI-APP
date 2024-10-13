@@ -50,7 +50,7 @@ export const Tasks: FC<NavIdProps> = ({ id }) => {
             before={<Image size={24} src={be_friendly} />}
             header="Как комарик укусит"
             subheader="Узнай больше о донорсве крови"
-            onClick={() => routeNavigator.push("tasks")}
+            onClick={() => routeNavigator.push("l1bf")}
           />
           <Banner
             before={<Image size={24} src={be_fit} />}
