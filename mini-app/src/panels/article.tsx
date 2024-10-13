@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import "@vkontakte/vkui/dist/vkui.css";
@@ -8,14 +8,8 @@ import {
   PanelHeader,
   PanelHeaderBack,
   Placeholder,
-  Header,
-  Button,
-  Group,
-  Div,
   NavIdProps,
-  SplitLayout,  // Импорт компонента
-  SplitCol,
-  Epic,
+
 } from '@vkontakte/vkui';
 
 import "./Article.css"

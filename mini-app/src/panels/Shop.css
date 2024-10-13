@@ -1,0 +1,40 @@
+.merch-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.merch-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.merch-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.merch-item .info {
+    text-align: left;
+}
+
+.merch-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.merch-item p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+.merch-item:hover {
+    transform: scale(1.05);
+}

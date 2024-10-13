@@ -21,6 +21,8 @@ export interface HomeProps extends NavIdProps {
 export const BEITMO: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
+
+  
   return (
     <Panel id={id}>
       <PanelHeader

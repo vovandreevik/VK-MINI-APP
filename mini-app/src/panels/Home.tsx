@@ -13,7 +13,6 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 // Мое
-import coins from "../assets/coins.png";
 import beITMO from "../assets/beITMO.png";
 import tasks from "../assets/tasks.png";
 import article from "../assets/article.png";
@@ -21,6 +20,7 @@ import ITMOshop from "../assets/ITMOshop.png";
 import Bars from "../assets/Bars.png";
 
 import "./Home.css";
+import { CoinsProgressBar } from "../components/CoinsProgressBar";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -34,14 +34,15 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
   const [count, setCount] = useState(0);
   const [isPressed, setIsPressed] = useState(false);
 
-  const maxCount = 10; // Максимальное значение для прогресс-бара (установите на ваше усмотрение)
+  const MAX_COUNT = 10;
+  const maxCounter = MAX_COUNT / 2; // Максимальное значение для прогресс-бара (установите на ваше усмотрение)
 
   // Функция для увеличения счётчика
   const handleTap = () => {
-    if (count < maxCount){
+    if (count < maxCounter) {
       setCount(count + 1);
-    setIsPressed(true);
-    } 
+      setIsPressed(true);
+    }
 
     setTimeout(() => {
       setIsPressed(false);
@@ -49,7 +50,7 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
   };
 
   // Вычисляем ширину прогресс-бара в процентах
-  const progressWidth = (count / maxCount) * 100;
+  const progressWidth = (count / MAX_COUNT) * 100;
 
   return (
     <SplitLayout>
@@ -58,19 +59,7 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
           <PanelHeader>Главная</PanelHeader>
           <Group>
             <div className="home-container">
-              <div className="home-header">
-                <div className="coins">
-                  <img src={coins} alt="coins" />
-                  <span>150</span>
-                </div>
-                {/* Прогресс-бар */}
-                <div className="progress-bar">
-                  <div
-                    className="progress"
-                    style={{ width: `${progressWidth}%` }} // Устанавливаем ширину в процентах
-                  />
-                </div>
-              </div>
+              <CoinsProgressBar coins={150} progressWidth={progressWidth} />
               <div className="character-section">
                 <div className="character-name">Невдупленыш</div>
                 <img
@@ -92,14 +81,24 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
                   className="icon"
                   onClick={() => routeNavigator.push("beITMO")}
                 />
-                <img src={tasks} alt="tasks" className="icon" />
+                <img
+                  src={tasks}
+                  alt="tasks"
+                  className="icon"
+                  onClick={() => routeNavigator.push("tasks")}
+                />
                 <img
                   src={article}
                   alt="article"
                   className="icon"
                   onClick={() => routeNavigator.push("article")}
                 />
-                <img src={ITMOshop} alt="ITMOshop" className="icon" />
+                <img
+                  src={ITMOshop}
+                  alt="ITMOshop"
+                  className="icon"
+                  onClick={() => routeNavigator.push("shop")}
+                />
               </div>
             </div>
           </Group>

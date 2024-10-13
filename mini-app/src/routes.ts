@@ -14,6 +14,8 @@ export const DEFAULT_VIEW_PANELS = {
   HOME: 'home',
   ARTICLE: 'article',
   BEITMO: 'beitmo',
+  TASKS: 'tasks',
+  SHOP: 'shop',
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -30,6 +32,12 @@ export const routes = RoutesConfig.create([
         `/${DEFAULT_VIEW_PANELS.BEITMO}`,
         []
       ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.TASKS,
+        `/${DEFAULT_VIEW_PANELS.TASKS}`,
+        []
+      ),
+      createPanel(DEFAULT_VIEW_PANELS.SHOP, `/${DEFAULT_VIEW_PANELS.SHOP}`, []),
     ]),
   ]),
 ]);
