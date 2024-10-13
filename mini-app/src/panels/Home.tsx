@@ -1,6 +1,5 @@
 import "@vkontakte/vkui/dist/vkui.css";
-
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import {
   Panel,
   PanelHeader,
@@ -13,14 +12,15 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 // Мое
-import coins from "../assets/coins.png";
 import beITMO from "../assets/beITMO.png";
 import tasks from "../assets/tasks.png";
 import article from "../assets/article.png";
 import ITMOshop from "../assets/ITMOshop.png";
-import Bars from "../assets/Bars.png";
+import Bars1 from "../assets/Bars1.png"; // Изображение для 1-го уровня
+import Bars2 from "../assets/Bars2.png"; // Изображение для 2-го уровня
 
 import "./Home.css";
+import { CoinsProgressBar } from "../components/CoinsProgressBar";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -34,22 +34,119 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
   const [count, setCount] = useState(0);
   const [isPressed, setIsPressed] = useState(false);
 
-  const maxCount = 10; // Максимальное значение для прогресс-бара (установите на ваше усмотрение)
-
+  const MAX_COUNT = 200;
+  const levelThreshold = MAX_COUNT; // Максимальное значение для прогресс-бара
+  
   // Функция для увеличения счётчика
   const handleTap = () => {
-    if (count < maxCount){
+    if (count < MAX_COUNT) {
       setCount(count + 1);
-    setIsPressed(true);
-    } 
-
+      setIsPressed(true);
+    }
     setTimeout(() => {
       setIsPressed(false);
     }, 100);
   };
 
+  interface UserData {
+    id: number;
+    levelNumber: number;
+    levelText: string;
+    countOfMoney: number;
+    countOfExp: number;
+  }
+
+  const isSecondLevel = count >= levelThreshold;
+  const BarsImage = isSecondLevel ? Bars2 : Bars1;
+  const characterName = isSecondLevel ? "Гигачад" : "Невдупленыш"; // Меняем имя персонажа
+  const [userData, setUserData] = useState<UserData | null>(null);
+
   // Вычисляем ширину прогресс-бара в процентах
-  const progressWidth = (count / maxCount) * 100;
+  const progressWidth = (count / MAX_COUNT) * 100;
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/user", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: fetchedUser?.id }), // Отправляем id пользователя
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Response from backend:", data);
+
+      setCount(data.user.countOfExp); // Используем setCount для обновления состояния
+      setUserData(data); // Сохраняем данные пользователя
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (fetchedUser?.id) {
+      fetchUserData(); // Выполняем асинхронный запрос только если id существует
+    }
+  }, [fetchedUser?.id]);
+
+  const sendUserDataOnUnload = async () => {
+    if (!userData) return;
+    try {
+      const response = await fetch("http://localhost:8000/api/user/update", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: fetchedUser?.id,
+          levelNumber: 1,
+          levelText: "Гигачад",
+          countOfMoney: 123, // Исправлено на число
+          countOfExp: count, // Отправляем текущее значение count
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      console.log("User data sent on page unload");
+    } catch (error) {
+      console.error("There was a problem with the unload fetch operation:", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      sendUserDataOnUnload(); // Вызываем асинхронную функцию для отправки данных
+      event.returnValue = "";
+    };
+
+    // Добавляем слушатель события
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Убираем слушатель при размонтировании компонента
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [userData]);
+
+  const handleTasksClick = () => {
+    sendUserDataOnUnload(); // Обновляем данные пользователя
+    routeNavigator.push("tasks");
+  };
+
+  const handleShopClick = () => {
+    sendUserDataOnUnload(); // Обновляем данные пользователя
+    routeNavigator.push("shop");
+  };
 
   return (
     <SplitLayout>
@@ -58,23 +155,11 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
           <PanelHeader>Главная</PanelHeader>
           <Group>
             <div className="home-container">
-              <div className="home-header">
-                <div className="coins">
-                  <img src={coins} alt="coins" />
-                  <span>150</span>
-                </div>
-                {/* Прогресс-бар */}
-                <div className="progress-bar">
-                  <div
-                    className="progress"
-                    style={{ width: `${progressWidth}%` }} // Устанавливаем ширину в процентах
-                  />
-                </div>
-              </div>
+              <CoinsProgressBar coins={150} progressWidth={progressWidth} />
               <div className="character-section">
-                <div className="character-name">Невдупленыш</div>
+                <div className="character-name">{characterName}</div>
                 <img
-                  src={Bars}
+                  src={BarsImage}
                   alt="Bars"
                   className={`Bars ${isPressed ? "pressed" : ""}`}
                   onClick={handleTap}
@@ -92,14 +177,24 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
                   className="icon"
                   onClick={() => routeNavigator.push("beITMO")}
                 />
-                <img src={tasks} alt="tasks" className="icon" />
+                <img
+                  src={tasks}
+                  alt="tasks"
+                  className="icon"
+                  onClick={handleTasksClick}
+                />
                 <img
                   src={article}
                   alt="article"
                   className="icon"
                   onClick={() => routeNavigator.push("article")}
                 />
-                <img src={ITMOshop} alt="ITMOshop" className="icon" />
+                <img
+                  src={ITMOshop}
+                  alt="ITMOshop"
+                  className="icon"
+                  onClick={handleShopClick}
+                />
               </div>
             </div>
           </Group>

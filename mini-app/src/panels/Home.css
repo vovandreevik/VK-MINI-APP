@@ -1,26 +1,8 @@
 html, body {
     height: 100vh;
-    /* Устанавливаем высоту экрана */
     margin: 0;
-    /* Убираем внешние отступы */
     overflow: hidden;
-    /* Отключаем прокрутку */
 }
-
-
-.home-header {
-    display: flex;
-    /* Устанавливаем Flexbox для горизонтального выравнивания */
-    align-items: center;
-    /* Вертикальное выравнивание по центру */
-    justify-content: space-between;
-    /* Распределяем пространство между элементами */
-    margin: 0 5%;
-    /* Добавляем отступы по бокам */
-    gap: 10px;
-
-}
-
 
 .home-container {
     background-image: url('../assets/fon.svg');
@@ -31,7 +13,12 @@ html, body {
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+}
 
+.character-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30%;
 }
 
 .Bars {
@@ -39,77 +26,10 @@ html, body {
     margin-left: auto;
     margin-right: auto;
     transition: transform 0.2s ease;
-    /* Плавная анимация для сдвига */
 }
 
 .Bars.pressed {
     transform: translateY(5px);
-    /* Опускаем картинку на 5 пикселей */
-}
-
-.counter {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.coins {
-    background-color: #4a90e2;
-    /* Синий цвет овала */
-    border-radius: 50px;
-    /* Делаем углы закруглёнными для овальной формы */
-    padding: 10px 20px;
-    /* Внутренние отступы, чтобы элементы не были вплотную к краям */
-    display: flex;
-    /* Flexbox для выравнивания */
-    align-items: center;
-    /* Вертикальное выравнивание по центру */
-    justify-content: center;
-    /* Горизонтальное выравнивание */
-    color: white;
-    width: fit-content;
-    margin-left: 2%
-        /* Цвет текста */
-}
-
-.coins img {
-    width: 20px;
-    /* Размер изображения монет */
-    height: 24px;
-    margin-right: 5px;
-    /* Отступ между картинкой и текстом */
-}
-
-.coins span {
-    font-size: 18px;
-    /* Размер шрифта для цифры */
-    font-weight: bold;
-    /* Жирный шрифт для цифры */
-}
-
-.progress-bar {
-    background-color: #e0e0e0;
-    /* Цвет фона прогресс-бара */
-    border-radius: 50px;
-    /* Закругление углов */
-    height: 42px;
-    /* Высота прогресс-бара */
-    margin: 10px 0;
-    /* Отступ сверху и снизу */
-    width: 100%;
-    /* Ширина прогресс-бара 100% от родителя */
-}
-
-.progress {
-    background-color: #4a90e2;
-    /* Цвет заполнения прогресс-бара */
-    height: 100%;
-    /* Высота заполнения равна высоте контейнера */
-    border-radius: 50px;
-    /* Закругление углов заполнения */
-    /* Плавная анимация изменения ширины */
-    width: 0;
-    /* Начальное значение ширины заполнения */
 }
 
 .icons {
@@ -120,31 +40,35 @@ html, body {
     display: flex;
     justify-content: center;
     gap: 20px;
-
 }
 
 .icon {
     background-color: white;
-    /* Синий цвет овала */
     border-radius: 50px;
-    /* Делаем углы закруглёнными для овальной формы */
     padding: 10px 20px;
-    /* Внутренние отступы, чтобы элементы не были вплотную к краям */
-    /* Flexbox для выравнивания */
     align-items: center;
-    /* Вертикальное выравнивание по центру */
     justify-content: center;
-    /* Горизонтальное выравнивание */
     color: white;
     width: fit-content;
-    margin-left: 1%
-        /* Цвет текста */
+    margin-left: 1%;
 }
 
-.character-name{
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 30%;
+@media (min-width: 800px) {
+*{
+    height: fit-content;
+    width: auto
 }
 
+        .Bars {
+            height: auto;
+            /* или другое подходящее значение */
+        }
 
+        .icons {
+            position: static;
+            margin-left: 50%;
+            max-width: fit-content;
+            margin-top: 0;
+            /* Уменьшите значение, чтобы иконки не исчезали */
+        }
+    }
