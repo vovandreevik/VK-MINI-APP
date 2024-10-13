@@ -3,7 +3,7 @@ import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { Home, Article } from './panels';
+import { Home, Article, BEITMO } from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -37,7 +37,7 @@ export const App = () => {
       slides: [
         {
           media: {
-            blob: 'D:\study\hakaton ITMO\src\assets', // Здесь добавьте ваши данные изображения в base64
+            blob: '..\assets', // Здесь добавьте ваши данные изображения в base64
             type: 'image',
           },
           title: 'Привет, первокурсник! Хочешь узнать больше о своём унике?',
@@ -62,6 +62,7 @@ export const App = () => {
         <View activePanel={activePanel}>
           <Home id="home" fetchedUser={fetchedUser} />
           <Article id="article" fetchedUser={fetchedUser} />
+          <BEITMO id="beitmo"/>
         </View>
       </SplitCol>
     </SplitLayout>

@@ -1,0 +1,11 @@
+ .article-container {
+     background-color: white;
+     text-align: left;
+     width: 95%;
+     line-height: 30px
+ }
+
+ .instructions{
+    font-weight: bold;
+    background-color: white;
+ }

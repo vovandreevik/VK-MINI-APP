@@ -13,6 +13,7 @@ export const DEFAULT_VIEW = 'default_view';
 export const DEFAULT_VIEW_PANELS = {
   HOME: 'home',
   ARTICLE: 'article',
+  BEITMO: 'beitmo',
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -22,6 +23,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.ARTICLE,
         `/${DEFAULT_VIEW_PANELS.ARTICLE}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.BEITMO,
+        `/${DEFAULT_VIEW_PANELS.BEITMO}`,
         []
       ),
     ]),

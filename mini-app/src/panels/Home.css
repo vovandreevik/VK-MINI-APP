@@ -7,7 +7,22 @@ html, body {
     /* Отключаем прокрутку */
 }
 
-.container {
+
+.home-header {
+    display: flex;
+    /* Устанавливаем Flexbox для горизонтального выравнивания */
+    align-items: center;
+    /* Вертикальное выравнивание по центру */
+    justify-content: space-between;
+    /* Распределяем пространство между элементами */
+    margin: 0 5%;
+    /* Добавляем отступы по бокам */
+    gap: 10px;
+
+}
+
+
+.home-container {
     background-image: url('../assets/fon.svg');
     background-size: cover;
     background-position: center;
@@ -53,15 +68,15 @@ html, body {
     /* Горизонтальное выравнивание */
     color: white;
     width: fit-content;
-    margin-left: 10%
+    margin-left: 2%
         /* Цвет текста */
 }
 
 .coins img {
-    width: 24px;
+    width: 20px;
     /* Размер изображения монет */
     height: 24px;
-    margin-right: 10px;
+    margin-right: 5px;
     /* Отступ между картинкой и текстом */
 }
 
@@ -72,15 +87,40 @@ html, body {
     /* Жирный шрифт для цифры */
 }
 
+.progress-bar {
+    background-color: #e0e0e0;
+    /* Цвет фона прогресс-бара */
+    border-radius: 50px;
+    /* Закругление углов */
+    height: 42px;
+    /* Высота прогресс-бара */
+    margin: 10px 0;
+    /* Отступ сверху и снизу */
+    width: 100%;
+    /* Ширина прогресс-бара 100% от родителя */
+}
+
+.progress {
+    background-color: #4a90e2;
+    /* Цвет заполнения прогресс-бара */
+    height: 100%;
+    /* Высота заполнения равна высоте контейнера */
+    border-radius: 50px;
+    /* Закругление углов заполнения */
+    /* Плавная анимация изменения ширины */
+    width: 0;
+    /* Начальное значение ширины заполнения */
+}
+
 .icons {
-        position: fixed;
-        margin-top: 167%;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: center;
-        gap: 20px;
- 
+    position: fixed;
+    margin-top: 167%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
 }
 
 .icon {
@@ -100,3 +140,11 @@ html, body {
     margin-left: 1%
         /* Цвет текста */
 }
+
+.character-name{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30%;
+}
+
+

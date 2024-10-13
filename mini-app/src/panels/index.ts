@@ -1,4 +1,5 @@
 export { Home } from './Home';
-export { Article } from './article';
+export { BEITMO } from "./BEITMO";
+export { Article } from './Article';
 
 export type { HomeProps } from './Home';

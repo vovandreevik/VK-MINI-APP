@@ -1,0 +1,86 @@
+html, body {
+    height: fit-content;
+    /* Устанавливаем высоту экрана */
+    margin: 0;
+    /* Убираем внешние отступы */
+    overflow: auto;
+    /* Отключаем прокрутку */
+}
+
+.beITMO-container {
+    text-align: left;
+    max-width: 375px;
+    /* Устанавливаем ширину контейнера под размеры изображения */
+    margin: 0 auto;
+    overflow: scroll;
+
+}
+
+
+.itmo-image img {
+    width: 100%;
+    /* Изображение занимает всю ширину контейнера */
+    height: auto;
+    /* Высота изменяется пропорционально */
+}
+
+
+.be-eco1, .be-fit1, .be-friendly1, .be-healthy1, .be-open1, .be-pro1 {
+    font-weight: bold;
+}
+
+.be-friendly::marker {
+    color: rgba(227, 89, 219, 1);
+    /* Цвет только для маркера */
+}
+
+.be-friendly1 {
+    color: rgba(227, 89, 219, 1);
+}
+
+.be-healthy::marker {
+    color: rgba(255, 58, 50, 1);
+    /* Цвет только для маркера */
+}
+
+.be-healthy1 {
+    color: rgba(255, 58, 50, 1);
+}
+
+.be-fit::marker {
+    color: rgba(0, 104, 255, 1);
+    /* Цвет только для маркера */
+}
+
+.be-fit1 {
+    color: rgba(0, 104, 255, 1);
+}
+
+
+.be-eco::marker {
+    color: rgba(111, 213, 46, 1);
+    /* Цвет только для маркера */
+}
+
+.be-eco1 {
+    color: rgba(111, 213, 46, 1);
+}
+
+.be-open::marker {
+    color: rgba(255, 180, 0, 1);
+    /* Цвет только для маркера */
+}
+
+.be-open1 {
+    color: rgba(255, 180, 0, 1);
+}
+
+.be-pro::marker {
+    color: rgba(149, 12, 255, 1);
+    /* Цвет только для маркера */
+}
+
+.be-pro1 {
+    color: rgba(149, 12, 255, 1);
+    ;
+}
