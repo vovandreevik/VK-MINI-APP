@@ -17,7 +17,8 @@ import beITMO from "../assets/beITMO.png";
 import tasks from "../assets/tasks.png";
 import article from "../assets/article.png";
 import ITMOshop from "../assets/ITMOshop.png";
-import Bars from "../assets/Bars.png";
+import Bars1 from "../assets/Bars1.png"; // Изображение для 1-го уровня
+import Bars2 from "../assets/Bars2.png"; // Изображение для 2-го уровня
 
 import "./Home.css";
 import { CoinsProgressBar } from "../components/CoinsProgressBar";
@@ -34,12 +35,12 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
   const [count, setCount] = useState(0);
   const [isPressed, setIsPressed] = useState(false);
 
-  const MAX_COUNT = 10;
-  const maxCounter = MAX_COUNT / 2; // Максимальное значение для прогресс-бара (установите на ваше усмотрение)
+  const MAX_COUNT = 200;
+  const levelThreshold = MAX_COUNT; // Порог для достижения 2-го уровня
 
   // Функция для увеличения счётчика
   const handleTap = () => {
-    if (count < maxCounter) {
+    if (count < MAX_COUNT) {
       setCount(count + 1);
       setIsPressed(true);
     }
@@ -48,6 +49,11 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
       setIsPressed(false);
     }, 100);
   };
+
+  // Определяем уровень на основе значения счётчика
+  const isSecondLevel = count >= levelThreshold;
+  const BarsImage = isSecondLevel ? Bars2 : Bars1;
+  const characterName = isSecondLevel ? "Гигачат" : "Невдупленыш"; // Меняем имя персонажа
 
   // Вычисляем ширину прогресс-бара в процентах
   const progressWidth = (count / MAX_COUNT) * 100;
@@ -61,9 +67,9 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
             <div className="home-container">
               <CoinsProgressBar coins={150} progressWidth={progressWidth} />
               <div className="character-section">
-                <div className="character-name">Невдупленыш</div>
+                <div className="character-name">{characterName}</div>
                 <img
-                  src={Bars}
+                  src={BarsImage}
                   alt="Bars"
                   className={`Bars ${isPressed ? "pressed" : ""}`}
                   onClick={handleTap}
@@ -85,7 +91,7 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
                   src={tasks}
                   alt="tasks"
                   className="icon"
-                  onClick={() => routeNavigator.push("tasks")}
+                  onClick={() => routeNavigator.push({ pathname: "tasks" })}
                 />
                 <img
                   src={article}

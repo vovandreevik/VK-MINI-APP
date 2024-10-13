@@ -1,6 +1,7 @@
 import "@vkontakte/vkui/dist/vkui.css";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { CoinsProgressBar } from "../components/CoinsProgressBar";
+import { UserInfo } from "@vkontakte/vk-bridge";
 
 import { FC } from "react";
 import {
@@ -10,12 +11,14 @@ import {
   PanelHeaderBack,
   Placeholder,
 } from "@vkontakte/vkui";
-
+export interface HomeProps extends NavIdProps {
+  fetchedUser?: UserInfo;
+}
 const MAX_COUNT = 100;
 const exp = 65;
 const progressWidth = (exp / MAX_COUNT) * 100;
 
-export const Shop: FC<NavIdProps> = ({ id }) => {
+export const Shop: FC<HomeProps> = ({ id, fetchedUser }) => {
   const routeNavigator = useRouteNavigator();
 
   return (

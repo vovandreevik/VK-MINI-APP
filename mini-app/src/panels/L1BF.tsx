@@ -1,19 +1,50 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   NavIdProps,
   Panel,
   PanelHeader,
   PanelHeaderBack,
   Placeholder,
+  Button,
 } from "@vkontakte/vkui";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import beFriendly from "../assets/beFriendly_text.png";
-import heart from "../assets/beFriendly.svg"
+import heart from "../assets/beFriendly.svg";
 import money150 from "../assets/coins.png";
 import "@vkontakte/vkui/dist/vkui.css";
+import { UserInfo } from "@vkontakte/vk-bridge";
 
-export const L1BF: FC<NavIdProps> = ({ id }) => {
+export interface HomeProps extends NavIdProps {
+  fetchedUser?: UserInfo;
+}
+
+import "./L1BF.css";
+
+export const L1BF: FC<HomeProps> = ({ id, fetchedUser }) => {
   const routeNavigator = useRouteNavigator();
+
+  // Состояние для отслеживания подписки
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  // Состояние для отслеживания, забрал ли пользователь награду
+  const [rewardClaimed, setRewardClaimed] = useState(false);
+
+  // Функция открытия ссылки на группу ВК и обновление состояния
+  const openVkLink = () => {
+    window.open("https://vk.com/donor_itmo", "_blank");
+    setIsSubscribed(true); // Считаем, что пользователь подписался
+  };
+
+  // Функция для обработки нажатия на кнопку "Забрать награду"
+  const claimReward = () => {
+    if (isSubscribed) {
+      setRewardClaimed(true);
+      alert("Поздравляем! Вы получили 150 баллов!");
+      // Здесь может быть логика для начисления баллов пользователю
+    } else {
+      alert("Сначала подпишитесь на группу ВК!");
+    }
+  };
 
   return (
     <Panel id={id}>
@@ -64,13 +95,26 @@ export const L1BF: FC<NavIdProps> = ({ id }) => {
               </div>
               <div className="money150">
                 <img className="moneyimg" src={money150} alt="money150" />
+                150
               </div>
             </div>
           </div>
           <footer>
             <div className="footer-container">
-              <button className="subscribe-button">Подписаться</button>
-              <button className="reward-button">Забрать награду</button>
+              <Button
+                className="subscribe-button"
+                onClick={openVkLink}
+                disabled={isSubscribed}
+              >
+                {isSubscribed ? "Вы подписались" : "Подписаться"}
+              </Button>
+              <Button
+                className="reward-button"
+                onClick={claimReward}
+                disabled={rewardClaimed}
+              >
+                {rewardClaimed ? "Награда получена" : "Забрать награду"}
+              </Button>
             </div>
           </footer>
         </>

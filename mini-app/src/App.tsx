@@ -1,19 +1,30 @@
-import { useState, useEffect, ReactNode } from 'react';
-import bridge, { UserInfo } from '@vkontakte/vk-bridge';
-import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
-import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
+import { useState, useEffect, ReactNode } from "react";
+import bridge, { UserInfo } from "@vkontakte/vk-bridge";
+import {
+  View,
+  SplitLayout,
+  SplitCol,
+  ScreenSpinner,
+  Root,
+} from "@vkontakte/vkui";
+import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
-import { Home, Article, BEITMO, Tasks, Shop, L1BF } from "./panels";
-import { DEFAULT_VIEW_PANELS } from './routes';
+import { Home, Article, BEITMO, Tasks, Shop, L1BF, L1BO } from "./panels";
+import { DEFAULT_VIEW, DEFAULT_VIEW_PANELS } from "./routes";
 
 export const App = () => {
-  const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
+  const {
+    panel: activePanel = DEFAULT_VIEW_PANELS.HOME,
+    view: activeView = DEFAULT_VIEW,
+  } = useActiveVkuiLocation();
   const [fetchedUser, setUser] = useState<UserInfo | undefined>();
-  const [popout, setPopout] = useState<ReactNode | null>(<ScreenSpinner size="large" />);
+  const [popout, setPopout] = useState<ReactNode | null>(
+    <ScreenSpinner size="large" />
+  );
 
   useEffect(() => {
     async function fetchData() {
-      const user = await bridge.send('VKWebAppGetUserInfo');
+      const user = await bridge.send("VKWebAppGetUserInfo");
       setUser(user);
       setPopout(null);
     }
@@ -56,19 +67,22 @@ export const App = () => {
       .catch((error) => {
         console.error(error); // Обработка ошибок
       });
-  }, []);  
+  }, []);
 
   return (
     <SplitLayout popout={popout}>
       <SplitCol>
-        <View activePanel={activePanel}>
-          <Home id="home" fetchedUser={fetchedUser} />
-          <Article id="article" fetchedUser={fetchedUser} />
-          <BEITMO id="beitmo" />
-          <Tasks id="tasks" />
-          <Shop id="shop" />
-          <L1BF id="l1bf" />
-        </View>
+        <Root id="default_root" activeView={activeView}>
+          <View id={DEFAULT_VIEW} activePanel={activePanel}>
+            <Home id="home" fetchedUser={fetchedUser} />
+            <Article id="article" fetchedUser={fetchedUser} />
+            <BEITMO id="beitmo" />
+            <Tasks id="tasks" />
+            <Shop id="shop" />
+            <L1BF id="l1bf" />
+            <L1BO id="l1bo" />
+          </View>
+        </Root>
       </SplitCol>
     </SplitLayout>
   );
