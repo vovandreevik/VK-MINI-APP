@@ -12,13 +12,12 @@ import {
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-// Мое
 import beITMO from "../assets/beITMO.png";
 import tasks from "../assets/tasks.png";
 import article from "../assets/article.png";
 import ITMOshop from "../assets/ITMOshop.png";
-import Bars1 from "../assets/Bars1.png"; // Изображение для 1-го уровня
-import Bars2 from "../assets/Bars2.png"; // Изображение для 2-го уровня
+import Bars1 from "../assets/Bars1.png";
+import Bars2 from "../assets/Bars2.png";
 
 import "./Home.css";
 import { CoinsProgressBar } from "../components/CoinsProgressBar";
@@ -31,14 +30,12 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
   const routeNavigator = useRouteNavigator();
   console.log(fetchedUser?.id);
 
-  // Состояние для счётчика
   const [count, setCount] = useState(0);
   const [isPressed, setIsPressed] = useState(false);
 
   const MAX_COUNT = 200;
-  const levelThreshold = MAX_COUNT; // Порог для достижения 2-го уровня
+  const levelThreshold = MAX_COUNT; 
 
-  // Функция для увеличения счётчика
   const handleTap = () => {
     if (count < MAX_COUNT) {
       setCount(count + 1);
@@ -50,12 +47,10 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
     }, 100);
   };
 
-  // Определяем уровень на основе значения счётчика
   const isSecondLevel = count >= levelThreshold;
   const BarsImage = isSecondLevel ? Bars2 : Bars1;
-  const characterName = isSecondLevel ? "Гигачат" : "Невдупленыш"; // Меняем имя персонажа
+  const characterName = isSecondLevel ? "Гигачад" : "Невдупленыш";
 
-  // Вычисляем ширину прогресс-бара в процентах
   const progressWidth = (count / MAX_COUNT) * 100;
 
   return (

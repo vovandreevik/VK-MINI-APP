@@ -23,13 +23,13 @@ export interface HomeProps extends NavIdProps {
 }
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import "./Tasks.css";
-import { router, routes } from "../routes";
+import { routes } from "../routes";
 
 const MAX_COUNT = 100;
 const exp = 87;
 const progressWidth = (exp / MAX_COUNT) * 100;
 
-export const Tasks: FC<HomeProps> = ({ id, fetchedUser }) => {
+export const Tasks: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   return (
     <Panel id={id}>

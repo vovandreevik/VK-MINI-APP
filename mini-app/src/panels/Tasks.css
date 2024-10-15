@@ -1,24 +1,17 @@
 .tasks-container {
     margin-top: 7%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    /* Расстояние между баннерами */
     padding: 20px;
-    /* Отступы внутри контейнера */
-
 }
 
 .vkuiBanner {
     width: 100%;
     max-width: 800px;
-    /* Устанавливаем максимальную ширину баннеров */
     border-radius: 12px;
-    /* Закругление углов баннеров для более аккуратного вида */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Тень для баннеров */
 }
 
 .page-name {

@@ -18,7 +18,7 @@ const MAX_COUNT = 100;
 const exp = 65;
 const progressWidth = (exp / MAX_COUNT) * 100;
 
-export const Shop: FC<HomeProps> = ({ id, fetchedUser }) => {
+export const Shop: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
 
   return (

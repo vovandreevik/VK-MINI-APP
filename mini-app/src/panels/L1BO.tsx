@@ -21,27 +21,20 @@ export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
 
-export const L1BO: FC<HomeProps> = ({ id, fetchedUser }) => {
+export const L1BO: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const [codeWord, setCodeWord] = useState<string>("");  const [isCodeCorrect, setIsCodeCorrect] = useState<boolean>(false);
 
-  // Состояние для отслеживания кода, введённого пользователем
-  const [codeWord, setCodeWord] = useState<string>("");
-  // Состояние для отслеживания, ввел ли пользователь правильный код
-  const [isCodeCorrect, setIsCodeCorrect] = useState<boolean>(false);
-
-  // Обработчик изменения ввода
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCodeWord(e.target.value);
   };
 
-  // Обработчик отправки формы
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (codeWord === "Поликек52") {
       setIsCodeCorrect(true);
       alert("Поздравляем! Вы получили 150 коинов!");
-      // Здесь может быть логика для начисления коинов пользователю
     } else {
       alert("Неправильное кодовое слово. Попробуйте снова.");
     }
@@ -92,7 +85,7 @@ export const L1BO: FC<HomeProps> = ({ id, fetchedUser }) => {
                     value={codeWord}
                     onChange={handleInputChange}
                     required
-                    disabled={isCodeCorrect} // Блокируем ввод после успешного ввода кода
+                    disabled={isCodeCorrect}
                   />
                   <div className="money150">
                     <img className="moneyimg" src={money150} alt="money150" />

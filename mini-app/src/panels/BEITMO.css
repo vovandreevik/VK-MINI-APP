@@ -4,7 +4,6 @@ html, body {
     overflow: auto;
 }
 
-/* Мобильная версия */
 .beITMO-container {
     text-align: left;
     max-width: 375px;
@@ -67,46 +66,4 @@ html, body {
 
 .be-pro1 {
     color: rgba(149, 12, 255, 1);
-}
-
-/* Адаптация для ПК-версии */
-@media (min-width: 1024px) {
-    .beITMO-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        overflow: visible;
-    }
-
-    .itmo-image img {
-        width: 80%;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    .description h2 {
-        font-size: 32px;
-    }
-
-    .description p, .description ul li {
-        font-size: 18px;
-        line-height: 1.6;
-    }
-
-    .description ul {
-        padding-left: 20px;
-    }
-
-    .be-friendly1, .be-healthy1, .be-fit1, .be-eco1, .be-open1, .be-pro1 {
-        font-size: 20px;
-    }
-
-    .description ul li {
-        margin-bottom: 15px;
-    }
-
-    .description h3 {
-        font-size: 26px;
-        margin-top: 20px;
-    }
 }

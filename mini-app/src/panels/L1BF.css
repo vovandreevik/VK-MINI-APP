@@ -1,19 +1,12 @@
-
-/* Стиль для первой кнопки */
 .subscribe-button {
     background: rgba(45, 129, 224, 1);
-    /* Синий фон */
 }
 
-/* Стиль для второй кнопки */
 .reward-button {
     margin-left: 10px;
     background: rgb(241, 65, 232);
-    /* Розовый фон */
 }
 
-/* Эффект при наведении на кнопки */
 button:hover {
     transform: scale(1.05);
-    /* Немного увеличивает кнопку */
 }

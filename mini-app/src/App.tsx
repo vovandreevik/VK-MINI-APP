@@ -35,15 +35,11 @@ export const App = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
-
-  // Вызываем функцию при загрузке
   setVh();
 
-  // Обновляем значение при изменении размеров окна
   window.addEventListener("resize", setVh);
 
   useEffect(() => {
-    // Показать слайд при первом запуске приложения
     bridge
       .send("VKWebAppShowSlidesSheet", {
         slides: [
@@ -59,13 +55,12 @@ export const App = () => {
         ],
       })
       .then((data) => {
-        // Если слайд успешно показан
         if (data.result) {
-          setPopout(null); // Скрыть спиннер, если слайд показан
+          setPopout(null);
         }
       })
       .catch((error) => {
-        console.error(error); // Обработка ошибок
+        console.error(error);
       });
   }, []);
 

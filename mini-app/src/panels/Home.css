@@ -52,23 +52,3 @@ html, body {
     width: fit-content;
     margin-left: 1%;
 }
-
-@media (min-width: 800px) {
-*{
-    height: fit-content;
-    width: auto
-}
-
-        .Bars {
-            height: auto;
-            /* или другое подходящее значение */
-        }
-
-        .icons {
-            position: static;
-            margin-left: 50%;
-            max-width: fit-content;
-            margin-top: 0;
-            /* Уменьшите значение, чтобы иконки не исчезали */
-        }
-    }

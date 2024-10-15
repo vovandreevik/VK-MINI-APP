@@ -62,7 +62,7 @@ export const CoinsProgressBar: FC<CoinsProgressBarProps> = ({
       <div className="progress-bar" onClick={showProgressSlide}>
         <div
           className="progress"
-          style={{ width: `${progressWidth}%` }} // Устанавливаем ширину в процентах
+          style={{ width: `${progressWidth}%` }}
         />
       </div>
     </div>

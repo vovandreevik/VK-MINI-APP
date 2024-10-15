@@ -20,27 +20,20 @@ export interface HomeProps extends NavIdProps {
 
 import "./L1BF.css";
 
-export const L1BF: FC<HomeProps> = ({ id, fetchedUser }) => {
+export const L1BF: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-
-  // Состояние для отслеживания подписки
   const [isSubscribed, setIsSubscribed] = useState(false);
-
-  // Состояние для отслеживания, забрал ли пользователь награду
   const [rewardClaimed, setRewardClaimed] = useState(false);
 
-  // Функция открытия ссылки на группу ВК и обновление состояния
   const openVkLink = () => {
     window.open("https://vk.com/donor_itmo", "_blank");
-    setIsSubscribed(true); // Считаем, что пользователь подписался
+    setIsSubscribed(true); 
   };
 
-  // Функция для обработки нажатия на кнопку "Забрать награду"
   const claimReward = () => {
     if (isSubscribed) {
       setRewardClaimed(true);
-      alert("Поздравляем! Вы получили 150 баллов!");
-      // Здесь может быть логика для начисления баллов пользователю
+      alert("Поздравляем! Вы получили 150 коинов!");
     } else {
       alert("Сначала подпишитесь на группу ВК!");
     }
