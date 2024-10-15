@@ -5,7 +5,7 @@ import coinsIcon from "../assets/coins.png";
 
 interface CoinsProgressBarProps {
   coins: number;
-  progressWidth: number; // Прогресс в процентах
+  progressWidth: number;
 }
 
 export const CoinsProgressBar: FC<CoinsProgressBarProps> = ({
