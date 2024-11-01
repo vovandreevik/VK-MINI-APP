@@ -1,7 +1,7 @@
 # Be ITMO VK-MINI-APP
 Be ITMO is a VK Mini App for exploring the ITMO culture and supporting students in their interaction with the university. The application includes tasks, information about directions and a virtual assistant of the Leopard, which develops as the tasks are completed.
 
-_Developed together with [gaminv](https://github.com/gaminv), [raikevichI](https://github.com/raikevichI) and [EdwardShiroki_]{https://github.com/EdwardShiroki_}
+_Developed together with [gaminv](https://github.com/gaminv), [raikevichI](https://github.com/raikevichI) and [EdwardShiroki](https://github.com/EdwardShiroki)_
 
 ## Technologies Used
 - **React** is a library for creating user interfaces.
